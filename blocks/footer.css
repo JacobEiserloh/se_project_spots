@@ -1,0 +1,14 @@
+.footer {
+  display: flex;
+}
+
+.footer__copyright {
+  margin: 0 auto;
+  padding: 60px 0;
+  font-family: Poppins;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
