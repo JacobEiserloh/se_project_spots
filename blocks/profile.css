@@ -64,11 +64,6 @@
   opacity: 100%;
 }
 
-.edit-button__image {
-  width: 16px;
-  height: 16px;
-}
-
 .profile__name {
   margin: 0 0 12px;
   max-width: 420px;
