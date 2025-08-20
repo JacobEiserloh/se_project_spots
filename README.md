@@ -17,3 +17,4 @@ Spots is an image sharing site, where users can view eachothers profiles, post i
 ## Deployment
 
 - [Github pages link ](https://jacobeiserloh.github.io/se_project_spots/)
+- [Tour video of the project](https://drive.google.com/file/d/1IY_BJ08zY9ZmzOZlivHsyE9LXEETM-VK/view?usp=sharing)
