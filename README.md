@@ -12,6 +12,8 @@ Spots is an image sharing site, where users can view eachothers profiles, post i
 - Css
 - Responsive Design
 
+![Responsive](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExczM1N3d6c2hjeHhxNWdpMGlraHRta3hvMzEwYm4ybWR3aWZhd3NiaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wWs0kFfe2iRDqCxJCc/giphy.gif)
+
 ## Deployment
 
 - [Github pages link ](https://jacobeiserloh.github.io/se_project_spots/)
