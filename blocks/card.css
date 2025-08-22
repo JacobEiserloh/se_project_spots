@@ -15,9 +15,6 @@
   align-items: center;
   justify-content: space-between;
   padding-top: 12px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
 }
 
 .card__like-button {
@@ -55,5 +52,6 @@
   }
   .card__title {
     font-size: 16px;
+    max-width: 235px;
   }
 }
