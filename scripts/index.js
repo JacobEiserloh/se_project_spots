@@ -24,7 +24,7 @@ function handleEditSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = profileNameInput.value;
   profileDesc.textContent = profileDescInput.value;
-  editProfileModal.classList.remove("modal_is-opened");
+  closeModal(editProfileModal);
 }
 
 function handleAddPostSubmit(evt) {
@@ -32,6 +32,7 @@ function handleAddPostSubmit(evt) {
   console.log(imageLinkInput.value);
   console.log(captionInput.value);
   newPostModal.classList.remove("modal_is-opened");
+  addPostForm.reset();
 }
 
 function openModal(modal) {
@@ -44,7 +45,6 @@ function closeModal(modal) {
 
 // edit profile event listeners
 profileEditBtn.addEventListener("click", function () {
-  // editProfileModal.classList.add("modal_is-opened");
   openModal(editProfileModal);
   profileNameInput.value = profileName.textContent;
   profileDescInput.value = profileDesc.textContent;
