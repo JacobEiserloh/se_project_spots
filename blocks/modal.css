@@ -39,7 +39,7 @@
   padding: 0;
   border: none;
   background: none;
-  opacity: 40%;
+  opacity: 0.4;
 }
 
 .modal__close-bttn:hover {
@@ -51,7 +51,7 @@
   margin: 0;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-weight: 500;
-  font-style: medium;
+  font-style: normal;
   font-size: 32px;
   line-height: 100%;
   letter-spacing: 0;
@@ -73,7 +73,7 @@
   font-weight: 500;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   line-height: 110%;
-  letter-spacing: 0%;
+  letter-spacing: 0;
   color: rgba(33, 33, 33, 0.7);
 }
 
@@ -97,6 +97,7 @@
 .modal__input:hover {
   cursor: pointer;
   border-color: rgba(33, 33, 33, 1);
+  opacity: 0.4;
 }
 
 .modal__submit-bttn {
@@ -116,6 +117,7 @@
 
 .modal__submit-bttn:hover {
   cursor: pointer;
+  opacity: 0.7;
 }
 
 .modal__preview-container {

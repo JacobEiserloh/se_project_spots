@@ -30,6 +30,8 @@
   background-color: transparent;
   opacity: 0.4;
   cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .card__like-button:hover {
@@ -39,6 +41,7 @@
 .card__like-button_active {
   background-image: url(../images/like-icon-active.svg);
   opacity: 1;
+  background-repeat: no-repeat;
 }
 
 .card__like-button_active:hover {
