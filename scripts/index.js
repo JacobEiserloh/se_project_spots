@@ -88,11 +88,18 @@ function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
 }
 
+const addModalListener = () => {};
+
 // edit profile event listeners
 profileEditBtn.addEventListener("click", function () {
-  openModal(editProfileModal);
   profileNameInput.value = profileName.textContent;
   profileDescInput.value = profileDesc.textContent;
+  resetValidation(
+    editProfileForm,
+    [profileNameInput, profileDescInput],
+    settings,
+  );
+  openModal(editProfileModal);
 });
 
 editProfileCloseBtn.addEventListener("click", function () {
@@ -104,6 +111,12 @@ editProfileForm.addEventListener("submit", handleEditSubmit);
 // profile add btn event listeners
 profileAddBtn.addEventListener("click", function () {
   openModal(newPostModal);
+});
+
+document.addEventListener("keydown", (evt) => {
+  if (evt.key === "Escape") {
+    closeModal(newPostModal);
+  }
 });
 
 newPostCloseBtn.addEventListener("click", function () {
