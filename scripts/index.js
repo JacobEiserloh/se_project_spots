@@ -77,6 +77,11 @@ function handleAddPostSubmit(evt) {
   cardsList.prepend(newPost);
   closeModal(newPostModal);
   addPostForm.reset();
+  const addPostInputs = Array.from(
+    addPostForm.querySelectorAll(settings.inputSelector),
+  );
+  const addPostBtn = addPostForm.querySelector(settings.submitButtonSelector);
+  toggleBtnState(addPostInputs, addPostBtn, settings);
 }
 
 function openModal(modal) {
@@ -89,7 +94,7 @@ function closeModal(modal) {
   removeModalCloseListener(modal);
 }
 
-const handleEscapeKey = (evt) => {
+const closeOnEscape = (evt) => {
   if (evt.key === "Escape") {
     const openedModal = document.querySelector(".modal_is-opened");
     if (openedModal) closeModal(openedModal);
@@ -97,11 +102,11 @@ const handleEscapeKey = (evt) => {
 };
 
 const addModalCloseListener = (modal) => {
-  document.addEventListener("keydown", handleEscapeKey);
+  document.addEventListener("keydown", closeOnEscape);
 };
 
 const removeModalCloseListener = (modal) => {
-  document.removeEventListener("keydown", handleEscapeKey);
+  document.removeEventListener("keydown", closeOnEscape);
 };
 
 document.querySelectorAll(".modal").forEach((modal) => {
