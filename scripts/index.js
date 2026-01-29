@@ -82,13 +82,37 @@ function handleAddPostSubmit(evt) {
 
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
+  addModalCloseListener(modal);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
+  removeModalCloseListener(modal);
 }
 
-const addModalListener = () => {};
+const addModalCloseListener = (modal) => {
+  document.addEventListener("keydown", (evt) => {
+    if (evt.key === "Escape") {
+      closeModal(modal);
+    }
+  });
+};
+
+const removeModalCloseListener = (modal) => {
+  document.removeEventListener("keydown", (evt) => {
+    if (evt.key === "Escape") {
+      closeModal(modal);
+    }
+  });
+};
+
+document.querySelectorAll(".modal").forEach((modal) => {
+  modal.addEventListener("click", (evt) => {
+    if (evt.target === modal) {
+      closeModal(modal);
+    }
+  });
+});
 
 // edit profile event listeners
 profileEditBtn.addEventListener("click", function () {
@@ -111,12 +135,6 @@ editProfileForm.addEventListener("submit", handleEditSubmit);
 // profile add btn event listeners
 profileAddBtn.addEventListener("click", function () {
   openModal(newPostModal);
-});
-
-document.addEventListener("keydown", (evt) => {
-  if (evt.key === "Escape") {
-    closeModal(newPostModal);
-  }
 });
 
 newPostCloseBtn.addEventListener("click", function () {
