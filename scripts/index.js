@@ -60,7 +60,6 @@ const previewCaption = previewModal.querySelector(".modal__caption");
 const previewImage = previewModal.querySelector(".modal__preview-image");
 const previewClose = previewModal.querySelector(".modal__close-bttn");
 
-// modal functions
 function handleEditSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = profileNameInput.value;
@@ -90,20 +89,19 @@ function closeModal(modal) {
   removeModalCloseListener(modal);
 }
 
+const handleEscapeKey = (evt) => {
+  if (evt.key === "Escape") {
+    const openedModal = document.querySelector(".modal_is-opened");
+    if (openedModal) closeModal(openedModal);
+  }
+};
+
 const addModalCloseListener = (modal) => {
-  document.addEventListener("keydown", (evt) => {
-    if (evt.key === "Escape") {
-      closeModal(modal);
-    }
-  });
+  document.addEventListener("keydown", handleEscapeKey);
 };
 
 const removeModalCloseListener = (modal) => {
-  document.removeEventListener("keydown", (evt) => {
-    if (evt.key === "Escape") {
-      closeModal(modal);
-    }
-  });
+  document.removeEventListener("keydown", handleEscapeKey);
 };
 
 document.querySelectorAll(".modal").forEach((modal) => {
@@ -114,7 +112,6 @@ document.querySelectorAll(".modal").forEach((modal) => {
   });
 });
 
-// edit profile event listeners
 profileEditBtn.addEventListener("click", function () {
   profileNameInput.value = profileName.textContent;
   profileDescInput.value = profileDesc.textContent;
@@ -132,7 +129,6 @@ editProfileCloseBtn.addEventListener("click", function () {
 
 editProfileForm.addEventListener("submit", handleEditSubmit);
 
-// profile add btn event listeners
 profileAddBtn.addEventListener("click", function () {
   openModal(newPostModal);
 });
@@ -143,12 +139,9 @@ newPostCloseBtn.addEventListener("click", function () {
 
 addPostForm.addEventListener("submit", handleAddPostSubmit);
 
-// preview modal event listeners
 previewClose.addEventListener("click", () => {
   closeModal(previewModal);
 });
-
-// cards functions
 
 function getCardElement(data) {
   const cardElement = cardTemplate.content.cloneNode(true);
