@@ -7,15 +7,13 @@
     <meta name="author" content="Jacob Eiserloh" />
     <meta name="keywords" content="html, css" />
     <title>Spots!</title>
-    <link rel="stylesheet" href="./pages/index.css" />
-    <link rel="icon" href="./favicon.ico" />
   </head>
   <body>
     <div class="page">
       <!-- header -->
       <header class="header">
         <img
-          src="./images/headerlogo.svg"
+          src="<%=require('./images/headerlogo.svg')%>"
           alt="Spots logo"
           class="header__image"
         />
@@ -24,7 +22,7 @@
         <!-- profile -->
         <section class="profile page__section">
           <img
-            src="./images/avatar.jpg"
+            src="<%=require('./images/avatar.jpg')%>"
             alt="profile avatar"
             class="profile__avatar"
           />
@@ -32,12 +30,12 @@
             <h1 class="profile__name">Bessie Coleman</h1>
             <p class="profile__description">Civil Aviator</p>
             <button type="button" class="profile__edit-button">
-              <img src="./images/pencil.svg" alt="edit button image" />
+              <img src="<%=require('./images/pencil.svg')%>" alt="edit button image" />
               Edit Profile
             </button>
           </div>
           <button type="button" class="profile__add-button">
-            <img src="./images/plus.svg" alt="add button image" />
+            <img src="<%=require('./images/plus.svg')%>" alt="add button image" />
             New Post
           </button>
         </section>
@@ -65,7 +63,7 @@
       <div class="modal" id="edit-profile-modal">
         <div class="modal__container">
           <button class="modal__close-bttn" type="button">
-            <img src="./images/Closeicon.svg" alt="close icon" />
+            <img src="<%=require('./images/Closeicon.svg')%>" alt="close icon" />
           </button>
           <h2 class="modal__title">Edit profile</h2>
           <form class="form modal__form">
@@ -109,7 +107,7 @@
       <div class="modal" id="new-post-modal">
         <div class="modal__container">
           <button class="modal__close-bttn" type="button">
-            <img src="./images/Closeicon.svg" alt="close icon" />
+            <img src="<%=require('./images/Closeicon.svg')%>" alt="close icon" />
           </button>
           <h2 class="modal__title">New post</h2>
           <form class="form modal__form">
@@ -154,14 +152,12 @@
             class="modal__close-bttn modal__close-bttn_type_preview"
             type="button"
           >
-            <img src="./images/white-close-icon.svg" alt="close icon" />
+            <img src="<%=require('./images/white-close-icon.svg')%>" alt="close icon" />
           </button>
           <img class="modal__preview-image" />
           <p class="modal__caption"></p>
         </div>
       </div>
     </div>
-    <script src="./scripts/validation.js"></script>
-    <script src="./scripts/index.js"></script>
   </body>
 </html>

@@ -1,3 +1,6 @@
+import {settings, enableValidation, resetValidation, toggleBtnState} from "../scripts/validation.js";
+
+import './index.css';
 const initialCards = [
   {
     name: "El Capitan",
@@ -183,3 +186,5 @@ initialCards.forEach(function (card) {
   const cardElement = getCardElement(card);
   cardsList.prepend(cardElement);
 });
+
+enableValidation(settings);
