@@ -1,6 +1,6 @@
 import {settings, enableValidation, resetValidation, toggleBtnState} from "../scripts/validation.js";
-
 import './index.css';
+
 const initialCards = [
   {
     name: "El Capitan",
@@ -63,6 +63,7 @@ const previewCaption = previewModal.querySelector(".modal__caption");
 const previewImage = previewModal.querySelector(".modal__preview-image");
 const previewClose = previewModal.querySelector(".modal__close-bttn");
 
+// edit submit handler
 function handleEditSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = profileNameInput.value;
@@ -70,6 +71,7 @@ function handleEditSubmit(evt) {
   closeModal(editProfileModal);
 }
 
+// add post submit handler
 function handleAddPostSubmit(evt) {
   evt.preventDefault();
   const newCard = {
@@ -87,16 +89,19 @@ function handleAddPostSubmit(evt) {
   toggleBtnState(addPostInputs, addPostBtn, settings);
 }
 
+// open modal func
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
   addModalCloseListener(modal);
 }
 
+// close modal func
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
   removeModalCloseListener(modal);
 }
 
+// close on escape func
 const closeOnEscape = (evt) => {
   if (evt.key === "Escape") {
     const openedModal = document.querySelector(".modal_is-opened");
@@ -104,6 +109,7 @@ const closeOnEscape = (evt) => {
   }
 };
 
+// close and open modal listeners
 const addModalCloseListener = (modal) => {
   document.addEventListener("keydown", closeOnEscape);
 };
@@ -120,6 +126,7 @@ document.querySelectorAll(".modal").forEach((modal) => {
   });
 });
 
+// edit profile btn listener
 profileEditBtn.addEventListener("click", function () {
   profileNameInput.value = profileName.textContent;
   profileDescInput.value = profileDesc.textContent;
@@ -131,26 +138,33 @@ profileEditBtn.addEventListener("click", function () {
   openModal(editProfileModal);
 });
 
+// edit profile close modal listener
 editProfileCloseBtn.addEventListener("click", function () {
   closeModal(editProfileModal);
 });
 
+// edit profile submit listener
 editProfileForm.addEventListener("submit", handleEditSubmit);
 
+// add post btn listener
 profileAddBtn.addEventListener("click", function () {
   openModal(newPostModal);
 });
 
+// new post close modal listener
 newPostCloseBtn.addEventListener("click", function () {
   closeModal(newPostModal);
 });
 
+// add post submit listener
 addPostForm.addEventListener("submit", handleAddPostSubmit);
 
+// preview close btn listener
 previewClose.addEventListener("click", () => {
   closeModal(previewModal);
 });
 
+// create card element func
 function getCardElement(data) {
   const cardElement = cardTemplate.content.cloneNode(true);
   const cardImage = cardElement.querySelector(".card__image");
@@ -182,9 +196,11 @@ function getCardElement(data) {
   return cardElement;
 }
 
+// create card and add to dom func
 initialCards.forEach(function (card) {
   const cardElement = getCardElement(card);
   cardsList.prepend(cardElement);
 });
 
+// enabling form validation 
 enableValidation(settings);
