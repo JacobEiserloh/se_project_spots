@@ -1,36 +1,6 @@
 import {settings, enableValidation, resetValidation, toggleBtnState} from "../scripts/validation.js";
 import './index.css';
-
-const initialCards = [
-  {
-    name: "El Capitan",
-    link: "https://images.unsplash.com/photo-1498429089284-41f8cf3ffd39?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070",
-  },
-  {
-    name: "Half Dome",
-    link: "https://plus.unsplash.com/premium_photo-1673603988651-99f79e4ae7d3?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
-  },
-  {
-    name: "Birmingham",
-    link: "https://images.unsplash.com/photo-1440582096070-fa5961d9d682?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2076",
-  },
-  {
-    name: "Doodle Bug",
-    link: "https://images.unsplash.com/photo-1511532514522-a14584b0ad3b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1074",
-  },
-  {
-    name: "Ninja 300",
-    link: "https://images.unsplash.com/photo-1619441159429-352f81bddca2?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=687",
-  },
-  {
-    name: "Web Design",
-    link: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1169",
-  },
-  {
-    name: "San Fran",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
-  },
-];
+import Api from "../utils/Api.js";
 
 // selecting edit profile elements
 const profileEditBtn = document.querySelector(".profile__edit-button");
@@ -62,6 +32,16 @@ const previewModal = document.querySelector("#preview-modal");
 const previewCaption = previewModal.querySelector(".modal__caption");
 const previewImage = previewModal.querySelector(".modal__preview-image");
 const previewClose = previewModal.querySelector(".modal__close-bttn");
+
+// instantiate Api class
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "3eaca0f8-fd35-44df-b757-ab2ec5198e69",
+    "Content-Type": "application/json"
+  }
+});
+
 
 // edit submit handler
 function handleEditSubmit(evt) {
@@ -196,10 +176,12 @@ function getCardElement(data) {
   return cardElement;
 }
 
-// create card and add to dom func
-initialCards.forEach(function (card) {
-  const cardElement = getCardElement(card);
-  cardsList.prepend(cardElement);
+
+api.getInitialCards().then((cards) => {
+  cards.forEach((card) => {
+    const cardElement = getCardElement(card);
+    cardsList.prepend(cardElement);
+  });
 });
 
 // enabling form validation 
