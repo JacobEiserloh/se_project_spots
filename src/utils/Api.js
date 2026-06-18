@@ -1,6 +1,6 @@
 export default class Api {
   constructor({ baseUrl, headers} ) {
-    this._baseurl = ba
+    this._baseUrl = baseUrl
     this._headers = headers;
   }
 
@@ -12,8 +12,19 @@ export default class Api {
   }
 
   getInitialCards() {
-    
+    return fetch(`${baseUrl}/cards`, {
+        headers: this._headers,
+    }) .then(this._handleServerResponse())
   }
 
-  // other methods for working with the API
+  addCard({title, url}){
+    return fetch(`${this._baseUrl}/cards`, {
+        method: "post",
+        headers: this._headers,
+        body: JSON.stringify({
+            title,
+            url
+        })
+    }) .then(this._handleServerResponse);
+  }
 }   
