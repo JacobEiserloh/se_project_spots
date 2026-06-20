@@ -54,19 +54,27 @@ function handleEditSubmit(evt) {
 // add post submit handler
 function handleAddPostSubmit(evt) {
   evt.preventDefault();
+
   const newCard = {
     name: captionInput.value,
     link: imageLinkInput.value,
   };
-  const newPost = getCardElement(newCard);
-  cardsList.prepend(newPost);
-  closeModal(newPostModal);
-  addPostForm.reset();
-  const addPostInputs = Array.from(
-    addPostForm.querySelectorAll(settings.inputSelector),
-  );
-  const addPostBtn = addPostForm.querySelector(settings.submitButtonSelector);
-  toggleBtnState(addPostInputs, addPostBtn, settings);
+
+  api.addCard(newCard)
+    .then((card) => {
+      const cardElement = getCardElement(card);
+      cardsList.prepend(cardElement);
+      closeModal(newPostModal);
+      addPostForm.reset();
+      const addPostInputs = Array.from(
+      addPostForm.querySelectorAll(settings.inputSelector),
+      );
+      const addPostBtn = addPostForm.querySelector(settings.submitButtonSelector);
+      toggleBtnState(addPostInputs, addPostBtn, settings);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 }
 
 // open modal func
@@ -182,7 +190,7 @@ api.getInitialCards().then((cards) => {
     const cardElement = getCardElement(card);
     cardsList.prepend(cardElement);
   });
-});
+}) .catch(console.error);
 
 // enabling form validation 
 enableValidation(settings);
