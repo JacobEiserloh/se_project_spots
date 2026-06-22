@@ -157,6 +157,9 @@ function getCardElement(data) {
   const cardElement = cardTemplate.content.cloneNode(true);
   const cardImage = cardElement.querySelector(".card__image");
   const cardTitle = cardElement.querySelector(".card__title");
+  const card = cardElement.querySelector(".card")
+
+  card.id = data._id;
 
   cardImage.src = data.link;
   cardImage.alt = data.name;
@@ -171,7 +174,9 @@ function getCardElement(data) {
   const deleteBtn = cardElement.querySelector(".card__delete-button");
   deleteBtn.addEventListener("click", (evt) => {
     const card = evt.currentTarget.closest(".card");
-    card.remove();
+    api.removeCard(card.id)
+    .then(card.remove())
+    .catch(console.error);
   });
 
   cardImage.addEventListener("click", () => {
@@ -189,6 +194,7 @@ api.getInitialCards().then((cards) => {
   cards.forEach((card) => {
     const cardElement = getCardElement(card);
     cardsList.prepend(cardElement);
+    console.log(card);
   });
 }) .catch(console.error);
 

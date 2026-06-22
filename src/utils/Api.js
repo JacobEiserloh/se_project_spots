@@ -25,7 +25,15 @@ class Api {
             name,
             link
         })
-    }) .then(this._handleServerResponse);
+    }) .then((res) => this._handleServerResponse(res));
+  }
+
+  removeCard(cardId){
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
+      method: "DELETE",
+      headers: this._headers
+    })
+    .then((res) => this._handleServerResponse(res))
   }
 }   
 
