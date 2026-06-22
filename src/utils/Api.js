@@ -4,6 +4,10 @@ class Api {
     this._headers = headers;
   }
 
+  getAppInfo(){
+    return Promise.all([this.getInitialCards()])
+  }
+
   _handleServerResponse(res){
     if (res.ok) {
         return res.json();

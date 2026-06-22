@@ -42,6 +42,15 @@ const api = new Api({
   }
 });
 
+api
+.getAppInfo()
+.then(([cards]) => {
+  cards.forEach((card) => {
+    const cardElement = getCardElement(card);
+    cardsList.prepend(cardElement);
+  });
+})
+.catch(console.error);
 
 // edit submit handler
 function handleEditSubmit(evt) {
@@ -188,15 +197,6 @@ function getCardElement(data) {
 
   return cardElement;
 }
-
-
-api.getInitialCards().then((cards) => {
-  cards.forEach((card) => {
-    const cardElement = getCardElement(card);
-    cardsList.prepend(cardElement);
-    console.log(card);
-  });
-}) .catch(console.error);
 
 // enabling form validation 
 enableValidation(settings);
