@@ -15,10 +15,16 @@ class Api {
     return Promise.reject(`Error: ${res.status}`);
   }
 
+  getUserInfo(){
+    return fetch(`${this._baseUrl}/users/me`, {
+      headers: this._headers
+    }) .then((res) => this._handleServerResponse(res));
+  }
+
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
-        headers: this._headers,
-    }) .then((res) => this._handleServerResponse(res))
+        headers: this._headers
+    }) .then((res) => this._handleServerResponse(res));
   }
 
   addCard({name, link}){
@@ -37,7 +43,7 @@ class Api {
       method: "DELETE",
       headers: this._headers
     })
-    .then((res) => this._handleServerResponse(res))
+    .then((res) => this._handleServerResponse(res));
   }
 }   
 
