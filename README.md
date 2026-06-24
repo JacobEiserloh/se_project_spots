@@ -8,9 +8,13 @@ Spots is an image sharing site, where users can view eachothers profiles, post i
 
 ## Tech Stack
 
-- Html
-- Css
+- JavaScript
+- WebPack
+- NodeJS
 - Responsive Design
+- CSS
+- HTML
+
 
 ![Responsive](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExczM1N3d6c2hjeHhxNWdpMGlraHRta3hvMzEwYm4ybWR3aWZhd3NiaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wWs0kFfe2iRDqCxJCc/giphy.gif)
 
