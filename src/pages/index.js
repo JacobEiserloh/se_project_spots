@@ -14,6 +14,7 @@ const profileName = document.querySelector(".profile__name");
 const profileNameInput = editProfileModal.querySelector("#profile-name-input");
 const profileDesc = document.querySelector(".profile__description");
 const profileDescInput = editProfileModal.querySelector("#profile-desc-input");
+const profileAvatar = document.querySelector(".profile__avatar");
 
 // selecting new post elements
 const profileAddBtn = document.querySelector(".profile__add-button");
@@ -44,11 +45,15 @@ const api = new Api({
 
 api
 .getAppInfo()
-.then(([cards]) => {
+.then(([cards, user]) => {
   cards.forEach((card) => {
     const cardElement = getCardElement(card);
     cardsList.prepend(cardElement);
   });
+
+  profileAvatar.src = user.avatar;
+  profileName.textContent = user.name;
+  profileDesc.textContent = user.about;
 })
 .catch(console.error);
 
