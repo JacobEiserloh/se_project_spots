@@ -34,7 +34,7 @@ const previewCaption = previewModal.querySelector(".modal__caption");
 const previewImage = previewModal.querySelector(".modal__preview-image");
 const previewClose = previewModal.querySelector(".modal__close-bttn");
 
-// instantiate Api class
+// create api class
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {

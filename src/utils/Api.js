@@ -21,6 +21,17 @@ class Api {
     }) .then((res) => this._handleServerResponse(res));
   }
 
+  editUserInfo({name, about}) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        name,
+        about
+      })
+    }) .then((res) => this._handleServerResponse(res));
+  }
+
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
         headers: this._headers
