@@ -60,9 +60,13 @@ api
 // edit submit handler
 function handleEditSubmit(evt) {
   evt.preventDefault();
-  profileName.textContent = profileNameInput.value;
-  profileDesc.textContent = profileDescInput.value;
-  closeModal(editProfileModal);
+  
+  api.editUserInfo({name: profileNameInput.value, about: profileDescInput.value})
+  .then((userInfo) => {
+    profileName.textContent = userInfo.name;
+    profileDesc.textContent = userInfo.about;
+    closeModal(editProfileModal);
+  }) .catch(console.error);
 }
 
 // add post submit handler
