@@ -16,6 +16,13 @@ const profileDesc = document.querySelector(".profile__description");
 const profileDescInput = editProfileModal.querySelector("#profile-desc-input");
 const profileAvatar = document.querySelector(".profile__avatar");
 
+// selecting edit avatar elements
+const editAvatarBtn = document.querySelector(".profile__avatar-btn");
+const editAvatarModal = document.querySelector("#edit-avatar-modal");
+const editAvatarModalClose = editAvatarModal.querySelector(".modal__close-bttn");
+const editAvatarInput = editAvatarModal.querySelector("#profile-avatar-input");
+const editAvatarform = editAvatarModal.querySelector(".modal__form");
+
 // selecting new post elements
 const profileAddBtn = document.querySelector(".profile__add-button");
 const newPostModal = document.querySelector("#new-post-modal");
@@ -57,10 +64,21 @@ api
 })
 .catch(console.error);
 
-// edit submit handler
+// edit avatar submit handler
+function handleEditAvatarSubmit(evt) {
+  evt.preventDefault
+
+  api.editAvatarInfo(editAvatarInput.value)
+  .then((avatarInfo) => {
+    profileAvatar.src = avatarInfo.avatar;
+    closeModal(editAvatarModal);
+  }) .catch(console.error);
+}
+
+// edit profile submit handler
 function handleEditSubmit(evt) {
   evt.preventDefault();
-  
+
   api.editUserInfo({name: profileNameInput.value, about: profileDescInput.value})
   .then((userInfo) => {
     profileName.textContent = userInfo.name;
@@ -144,13 +162,26 @@ profileEditBtn.addEventListener("click", function () {
   openModal(editProfileModal);
 });
 
-// edit profile close modal listener
+// edit profile modal close listener
 editProfileCloseBtn.addEventListener("click", function () {
   closeModal(editProfileModal);
 });
 
 // edit profile submit listener
 editProfileForm.addEventListener("submit", handleEditSubmit);
+
+// edit avatar btn listener
+editAvatarBtn.addEventListener("click", function () {
+  openModal(editAvatarModal);
+})
+
+// edit avatar modal close listener
+editAvatarModalClose.addEventListener("click", function () {
+  closeModal(editAvatarModal);
+});
+
+// edit avatar submit listener
+editAvatarform.addEventListener("submit" , handleEditAvatarSubmit);
 
 // add post btn listener
 profileAddBtn.addEventListener("click", function () {

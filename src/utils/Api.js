@@ -32,6 +32,16 @@ class Api {
     }) .then((res) => this._handleServerResponse(res));
   }
 
+  editAvatarInfo(avatar){
+    return fetch(`${this._baseUrl}/users/me/avatar` , {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar
+      })
+    }) .then((res) => this._handleServerResponse(res));
+  }
+
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
         headers: this._headers

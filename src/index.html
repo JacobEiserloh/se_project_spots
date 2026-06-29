@@ -21,11 +21,20 @@
       <main class="content">
         <!-- profile -->
         <section class="profile page__section">
-          <img
-            src="<%=require('./images/avatar.jpg')%>"
-            alt="profile avatar"
-            class="profile__avatar"
-          />
+          <div class="profile__avatar-container">
+            <button class="profile__avatar-btn">
+              <img 
+                src="<%=require('./images/white-pencil.svg')%>"
+                alt="white pencil"
+                class="profile__pencil-icon"
+              />
+            </button>
+            <img
+              src="<%=require('./images/avatar.jpg')%>"
+              alt="profile avatar"
+              class="profile__avatar"
+            />
+          </div>
           <div class="profile__info">
             <h1 class="profile__name">Bessie Coleman</h1>
             <p class="profile__description">Civil Aviator</p>
@@ -59,6 +68,32 @@
       <footer class="footer">
         <p class="footer__copyright">2025 &copy; Spots</p>
       </footer>
+      <!-- Edit avatar modal -->
+      <div class="modal" id="edit-avatar-modal">
+        <div class="modal__container">
+          <button class="modal__close-bttn" type="button">
+            <img src="<%=require('./images/Closeicon.svg')%>" alt="close icon" />
+          </button>
+          <h2 class="modal__title">Edit profile avatar</h2>
+          <form class="form modal__form">
+            <label for="profile-avatar-input" class="form__label">
+              Profile Picture
+              <input
+                id="profile-avatar-input"
+                type="url"
+                class="form__input"
+                placeholder="Paste the link to an image"
+                required
+              />
+              <span
+                id="profile-avatar-input-error"
+                class="form__input-error"
+              ></span>
+            </label>
+            <button class="form__submit-btn" type="submit">Save</button>
+          </form>
+        </div>
+      </div>
       <!-- Edit profile modal -->
       <div class="modal" id="edit-profile-modal">
         <div class="modal__container">
